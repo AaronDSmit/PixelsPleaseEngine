@@ -29,6 +29,7 @@ Application::~Application()
 
 int Application::run(const char * a_windowName, int a_width, int a_height, bool a_fullscreen)
 {
+	// start game loop if successfully initialised
 	if (createWindow(a_windowName, a_width, a_height, a_fullscreen) == 0 && onStartup() == 0)
 	{
 		unsigned int frames = 0;
@@ -97,7 +98,7 @@ void Application::setVSync(bool enable)
 void Application::setBackgroundColour(float r, float g, float b, float a)
 {
 	glClearColor(r, g, b, a);
-	aie::Gizmos::clear();
+	// aie::Gizmos::clear();
 }
 
 void Application::clearScreen()
@@ -138,8 +139,13 @@ int Application::createWindow(const char * a_windowName, int a_width, int a_heig
 	auto minor = ogl_GetMinorVersion();
 	std::cout << major << "." << minor << std::endl;
 
-	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+	glClearColor(0, 0, 0, 1);
+
 	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_CULL_FACE);
+
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	return 0;
 }

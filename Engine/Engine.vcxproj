@@ -73,8 +73,8 @@
     <TargetName>$(ProjectName)_d</TargetName>
     <IncludePath>$(SolutionDir)dependencies\stb;$(SolutionDir)dependencies\imgui\;$(SolutionDir)dependencies\glcore;$(SolutionDir)dependencies\glm;$(SolutionDir)dependencies\aie;$(SolutionDir)dependencies\glfw\include;$(VC_IncludePath);$(WindowsSDK_IncludePath);$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)dependencies\glfw\lib-vc2017;$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)builds\x86</OutDir>
-    <IntDir>$(SolutionDir)temp\x86\debug</IntDir>
+    <OutDir>$(SolutionDir)libs\x86\</OutDir>
+    <IntDir>$(SolutionDir)temp\x86\debug\libs\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <TargetName>$(ProjectName)_d</TargetName>
@@ -140,12 +140,17 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\dependencies\aie\aie\Gizmos.h" />
     <ClInclude Include="Application.h" />
+    <ClInclude Include="Camera.h" />
+    <ClInclude Include="FirstPersonCamera.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\dependencies\aie\aie\Gizmos.cpp" />
     <ClCompile Include="..\dependencies\glcore\gl_core_4_4.c" />
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="FirstPersonCamera.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

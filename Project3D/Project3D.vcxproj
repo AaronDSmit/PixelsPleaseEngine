@@ -71,8 +71,10 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(SolutionDir)builds\x86\</OutDir>
-    <IntDir>$(SolutionDir)temp\x86\debug</IntDir>
+    <IntDir>$(SolutionDir)temp\x86\debug\</IntDir>
     <TargetName>$(ProjectName)_d</TargetName>
+    <IncludePath>$(SolutionDir)Engine;$(SolutionDir)dependencies\glcore;$(SolutionDir)dependencies\glm;$(SolutionDir)dependencies\aie;$(SolutionDir)dependencies\glfw\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)libs\x86;$(SolutionDir)dependencies\glfw\lib-vc2017;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -81,6 +83,9 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
+    <Link>
+      <AdditionalDependencies>opengl32.lib;glfw3.lib;Engine_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -119,7 +124,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Application3D.cpp" />
     <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Application3D.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
