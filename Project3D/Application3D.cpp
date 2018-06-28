@@ -17,7 +17,13 @@ int Application3D::onStartup()
 {
 	aie::Gizmos::create(10000, 10000, 10000, 10000);
 
-	m_camera = new FirstPersonCamera(5.0f, 5.0f);
+	setBackgroundColour(0.25f, 0.25f, 0.25f, 1.0f);
+
+	m_camera = new FirstPersonCamera(5.0f, 2.0f);
+
+	glm::mat4 view = glm::lookAt(glm::vec3(10, 10, 10), glm::vec3(0), glm::vec3(0, 1, 0));
+	m_viewMatrix = view;
+	m_camera->setViewMatrix(view);
 
 	m_projectionMatrix = glm::perspective(glm::pi<float>() * 0.25f, (float)getWindowWidth() / (float)getWindowHeight(), 0.1f, 1000.f);
 	m_camera->setProjectionMatrix(m_projectionMatrix);
@@ -27,6 +33,7 @@ int Application3D::onStartup()
 
 void Application3D::onShutdown()
 {
+	delete m_camera;
 	aie::Gizmos::destroy();
 }
 
@@ -45,11 +52,9 @@ void Application3D::render()
 	// wipe the screen to the background colour
 	clearScreen();
 
-	setBackgroundColour(0.3f, 0.3f, 0.3f, 1.0f);
-
 	aie::Gizmos::clear();
 
-	aie::Gizmos::addTransform(glm::mat4(1), 10.0f);
+	aie::Gizmos::addTransform(glm::mat4(1), 5.0f);
 
 	glm::vec4 white(1);
 	glm::vec4 black(0, 0, 0.5, 1);
@@ -65,5 +70,4 @@ void Application3D::render()
 	aie::Gizmos::addSphere(glm::vec3(0), 3, 8, 8, yellow);
 
 	aie::Gizmos::draw(m_camera->getClipSpace());
-	// aie::Gizmos::draw(m_camera->getProjectionMatrix() * m_camera->getViewMatrix());
 }

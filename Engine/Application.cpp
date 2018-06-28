@@ -98,7 +98,6 @@ void Application::setVSync(bool enable)
 void Application::setBackgroundColour(float r, float g, float b, float a)
 {
 	glClearColor(r, g, b, a);
-	// aie::Gizmos::clear();
 }
 
 void Application::clearScreen()

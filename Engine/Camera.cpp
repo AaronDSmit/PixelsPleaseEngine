@@ -1,11 +1,12 @@
 #include "Camera.h"
 #include <cassert>
 
+
 Camera::Camera()
 	: m_worldTransform(glm::mat4(1))
 	, m_projectionMatrix(glm::mat4(1))
-	, m_viewMatrix(glm::mat4(1))
 	, m_hasSetProjectionMatrix(false)
+	, m_hasSetViewMatrix(false)
 {
 
 }
@@ -18,6 +19,16 @@ Camera::~Camera()
 void Camera::translate(glm::vec4 translation)
 {
 	m_worldTransform[3] += translation;
+}
+
+void Camera::setViewMatrix(glm::mat4 a_viewMatrix)
+{
+	m_worldTransform = glm::inverse(a_viewMatrix);
+}
+
+glm::mat4 Camera::getViewMatrix() const
+{
+	return (m_hasSetViewMatrix) ? m_worldTransform : glm::inverse(m_worldTransform);
 }
 
 void Camera::setProjectionMatrix(glm::mat4 projectionMatrix)
