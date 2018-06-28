@@ -153,7 +153,12 @@
     <ClInclude Include="Application.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="FirstPersonCamera.h" />
+    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="DirectionalLight.h" />
+    <ClInclude Include="Lighting.h" />
     <ClInclude Include="Mesh.h" />
+    <ClInclude Include="PointLight.h" />
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\dependencies\aie\aie\Gizmos.cpp" />
@@ -164,7 +169,12 @@
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="FirstPersonCamera.cpp" />
+    <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="Lighting.cpp" />
     <ClCompile Include="Mesh.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Engine.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

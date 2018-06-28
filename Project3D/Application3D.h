@@ -7,6 +7,11 @@
 #include <aie/OBJMesh.h>
 
 #include <glm/glm.hpp>
+#include <memory>
+#include <vector>
+
+#include <GameObject.h>
+#include <Lighting.h>
 
 class Application3D : public Application
 {
@@ -22,12 +27,17 @@ public:
 protected:
 
 	class FirstPersonCamera* m_camera;
-	glm::mat4 m_projectionMatrix;
-	glm::mat4 m_viewMatrix;
 
 	aie::ShaderProgram m_shader;
-	aie::OBJMesh m_bunnyMesh;
-	glm::mat4 m_bunnyTransform;
+
+	//Soul Spear
+	aie::OBJMesh m_soulspearMesh;
+	glm::mat4 m_soulspearTransform;
+	aie::Texture m_soulspearTexture;
+
+	std::vector<std::unique_ptr<GameObject>> m_objects;
+
+	std::unique_ptr<Lighting> m_lighting;
 };
 
 #endif // !Application3D_H

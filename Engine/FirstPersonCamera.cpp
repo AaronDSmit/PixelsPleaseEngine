@@ -18,6 +18,7 @@ FirstPersonCamera::FirstPersonCamera(float a_moveSpeed, float a_rotationSpeed)
 	, m_mouseX(0.0)
 	, m_mouseY(0.0)
 	, m_mouseDown(false)
+	, m_fastMode(false)
 {
 
 }
@@ -39,8 +40,6 @@ void FirstPersonCamera::tick(GLFWwindow* window, float deltaTime)
 		{
 			glfwGetCursorPos(window, &m_mouseClickX, &m_mouseClickY);
 			m_mouseDown = true;
-
-			std::cout << "Mouse first Pressed" << std::endl;
 		}
 		else
 		{
@@ -71,13 +70,24 @@ void FirstPersonCamera::processKeyboardInput(GLFWwindow* window, float deltaTime
 	{
 		translate(m_right * deltaTime * m_moveSpeed);
 	}
-	if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS)
-	{
-		translate(m_worldUp * deltaTime * m_moveSpeed);
-	}
+
 	if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS)
 	{
-		translate(-m_worldUp * deltaTime * m_moveSpeed);
+		if (!m_fastMode)
+		{
+			m_fastMode = true;
+			m_moveSpeed *= 2.0f;
+			m_rotationSpeed *= 1.5f;
+		}
+	}
+	else
+	{
+		if (m_fastMode)
+		{
+			m_fastMode = false;
+			m_moveSpeed *= 0.5f;
+			m_rotationSpeed /= 1.5f;
+		}
 	}
 }
 

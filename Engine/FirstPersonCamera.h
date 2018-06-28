@@ -37,6 +37,7 @@ private:
 	double m_mouseY;
 
 	bool m_mouseDown;
+	bool m_fastMode;
 };
 
 #endif // !FirstPersonCamera_H
