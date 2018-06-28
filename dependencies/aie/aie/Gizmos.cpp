@@ -3,7 +3,7 @@
 #include <glm/glm.hpp>
 #include <glm/ext.hpp>
 #include <iostream>
-#include <Gizmos.h>
+#include <aie/Gizmos.h>
 
 namespace aie {
 

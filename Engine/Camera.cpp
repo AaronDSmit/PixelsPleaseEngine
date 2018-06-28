@@ -43,6 +43,11 @@ const glm::mat4& Camera::getProjectionMatrix() const
 	return m_projectionMatrix;
 }
 
+const glm::mat4 Camera::getProjectionView()
+{
+	return getProjectionMatrix() * getViewMatrix();
+}
+
 void Camera::lookAt(glm::vec4 focusPoint, glm::vec3 up)
 {
 	auto view = glm::lookAt(glm::vec3(m_worldTransform[3]), glm::vec3(focusPoint), up);

@@ -29,6 +29,8 @@ public:
 	void setProjectionMatrix(glm::mat4 projectionMatrix);
 	const glm::mat4& getProjectionMatrix() const;
 
+	const glm::mat4 getProjectionView();
+
 	glm::mat4 getClipSpace() { return m_projectionMatrix * getViewMatrix(); }
 
 	void lookAt(glm::vec4 focusPoint, glm::vec3 up = { 0,1,0 });

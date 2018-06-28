@@ -157,6 +157,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\dependencies\aie\aie\Gizmos.cpp" />
+    <ClCompile Include="..\dependencies\aie\aie\OBJMesh.cpp" />
+    <ClCompile Include="..\dependencies\aie\aie\Shader.cpp" />
+    <ClCompile Include="..\dependencies\aie\aie\Texture.cpp" />
     <ClCompile Include="..\dependencies\glcore\gl_core_4_4.c" />
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Camera.cpp" />
